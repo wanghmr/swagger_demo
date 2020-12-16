@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author wh
  * @date 2020/12/16
  * Description:启动类
+ * 访问路径：http://localhost:8080/doc.html
  */
 @SpringBootApplication
 public class SwaggerDemoApplication {
