@@ -1,6 +1,6 @@
-package com.text.swagger_demo.controller;
+package com.text.swaggerdemo.controller;
 
-import com.text.swagger_demo.model.RoleDTO;
+import com.text.swaggerdemo.model.RoleDTO;
 import io.swagger.annotations.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +41,8 @@ public class RoleController {
     })
     public List<RoleDTO> page(@RequestParam(defaultValue = "1", required = false) Integer pageNum,
                               @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
+        System.out.println(pageNum);
+        System.out.println(pageSize);
         return list;
     }
 
@@ -80,9 +82,7 @@ public class RoleController {
     @ApiResponses({@ApiResponse(code = 400, message = "请求参数没填好"),
             @ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对")})
     public Boolean update(@RequestBody @ApiParam(name = "UserDTO", value = "更新用户参数") RoleDTO userDTO) {
-        Iterator<RoleDTO> iterator = list.iterator();
-        while (iterator.hasNext()) {
-            RoleDTO next = iterator.next();
+        for (RoleDTO next : list) {
             if (next.getRoleId().equals(userDTO.getRoleId())) {
                 next.setRoleName(userDTO.getRoleName());
                 return true;

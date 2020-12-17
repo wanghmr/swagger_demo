@@ -1,4 +1,4 @@
-package com.text.swagger_demo.model;
+package com.text.swaggerdemo.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

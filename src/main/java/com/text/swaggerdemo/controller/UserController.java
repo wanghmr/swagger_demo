@@ -1,6 +1,6 @@
-package com.text.swagger_demo.controller;
+package com.text.swaggerdemo.controller;
 
-import com.text.swagger_demo.model.UserDTO;
+import com.text.swaggerdemo.model.UserDTO;
 import io.swagger.annotations.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +41,8 @@ public class UserController {
     })
     public List<UserDTO> page(@RequestParam(defaultValue = "1", required = false) Integer pageNum,
                               @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
+        System.out.println(pageNum);
+        System.out.println(pageSize);
         return list;
     }
 
@@ -80,9 +82,7 @@ public class UserController {
     @ApiResponses({@ApiResponse(code = 400, message = "请求参数没填好"),
             @ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对")})
     public Boolean update(@RequestBody @ApiParam(name = "UserDTO", value = "更新用户参数") UserDTO userDTO) {
-        Iterator<UserDTO> iterator = list.iterator();
-        while (iterator.hasNext()) {
-            UserDTO next = iterator.next();
+        for (UserDTO next : list) {
             if (next.getUserId().equals(userDTO.getUserId())) {
                 next.setUsername(userDTO.getUsername());
                 return true;

@@ -1,4 +1,4 @@
-package com.text.swagger_demo;
+package com.text.swaggerdemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
